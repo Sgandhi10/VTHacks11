@@ -80,7 +80,7 @@ def main():
     displayData((str)(round(totalTime/60)) + " mins", (str)(100 - capacity))
     if totalTime > 300:
         sendSMS('+19732166660',
-                f"Bus {bRoute} is {round(totalTime/60)} minutes away from your stop. Capacity is {capacity}%.")
+                f"Bus {bRoute} is {round(totalTime/60)} minutes away from your stop. Availability is {100 - capacity}%.")
         while totalTime > 300:
             time.sleep(max((totalTime - 300) * .75, 30))
             totalTime, capacity, numWaypoints = getClosestBus(
@@ -91,7 +91,7 @@ def main():
                 numWaypoints if capacity > 50 else 0  # Bus tends to stop longer
             print(totalTime, capacity, numWaypoints)
         sendSMS(
-            '+19732166660', f"Bus {bRoute} is {round(totalTime/60)} minutes away from your stop. Capacity is {capacity}%.")
+            '+19732166660', f"Bus {bRoute} is {round(totalTime/60)} minutes away from your stop. Availability is {100 - capacity}%.")
     else:
         print(totalTime, capacity, numWaypoints)
 

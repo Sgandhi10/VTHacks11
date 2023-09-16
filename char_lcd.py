@@ -6,12 +6,13 @@ import Adafruit_CharLCD as LCD
 
 
 # Raspberry Pi pin configuration:
-lcd_rs        = 25  # Note this might need to be changed to 21 for older revision Pi's.
-lcd_en        = 24
-lcd_d4        = 23
-lcd_d5        = 17
-lcd_d6        = 18
-lcd_d7        = 22
+# Note this might need to be changed to 21 for older revision Pi's.
+lcd_rs = 25
+lcd_en = 24
+lcd_d4 = 23
+lcd_d5 = 17
+lcd_d6 = 18
+lcd_d7 = 22
 lcd_backlight = 4
 
 # Button Pressing
@@ -30,7 +31,7 @@ GPIO.setup(button_signal, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
 # Define LCD column and row size for 16x2 LCD.
 lcd_columns = 16
-lcd_rows    = 2
+lcd_rows = 2
 
 # Alternatively specify a 20x4 LCD.
 # lcd_columns = 20
@@ -45,6 +46,7 @@ lcd.show_cursor(False)
 lcd.blink(False)
 lcd.clear()
 
+
 def buttonPressed():
     return GPIO.input(button_signal) == GPIO.HIGH
 
@@ -54,7 +56,7 @@ def displayData(_time, _cap):
 
     # Clear the screen for resets
     lcd.clear()
-      
+
     # Print Bus Stop Detials
     lcd.message('TOMS CREEK\nSTOP:1313')
 
@@ -67,19 +69,19 @@ def displayData(_time, _cap):
     lcd.message('ETA: ')
     lcd.message(_time)
     lcd.message('\n')
-    lcd.message('Capacity: ')
+    lcd.message('Availability: ')
     lcd.message(_cap)
 
     time.sleep(2.5)
 
     lcd.clear()
-    lcd.message('Goodbye!')
+    lcd.message('Safe Travels!')
     time.sleep(1.5)
     lcd.clear()
     # Turn backlight on.
     lcd.set_backlight(1)
 
-    lcd.set_cursor(0,0)
+    lcd.set_cursor(0, 0)
     BUS_IMG1 = '/ [][][][][]{ }|'
     BUS_IMG2 = '|_()__VT__(){ }/'
     lcd.message("")
@@ -95,3 +97,4 @@ def displayData(_time, _cap):
         lcd.message(printStr)
         time.sleep(0.25)
 
+    lcd.clear()
