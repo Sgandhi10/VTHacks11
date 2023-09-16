@@ -71,7 +71,7 @@ def getClosestBus(_route, targetStop):
     return totalTime, capacity, len(waypoints)
 
 
-if __name__ == "__main__":
+def main():
     bRoute = "TOM"
     targetStop = 1313
     totalTime, capacity, numWaypoints = getClosestBus(bRoute, targetStop)
@@ -83,8 +83,8 @@ if __name__ == "__main__":
             time.sleep(max((totalTime - 300) * .75, 30))
             totalTime, capacity, numWaypoints = getClosestBus(
                 bRoute, targetStop)
-            
-            totalTime *= 1.2 # Bus tends to move slower
+
+            totalTime *= 1.2  # Bus tends to move slower
             totalTime += 30 * \
                 numWaypoints if capacity > 50 else 0  # Bus tends to stop longer
             print(totalTime, capacity, numWaypoints)
@@ -92,3 +92,7 @@ if __name__ == "__main__":
             '+19732166660', f"Bus {bRoute} is {round(totalTime/60)} minutes away from your stop. Capacity is {capacity}%.")
     else:
         print(totalTime, capacity, numWaypoints)
+
+
+if __name__ == "__main__":
+    main()
