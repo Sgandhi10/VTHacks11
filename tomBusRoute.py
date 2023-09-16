@@ -6,6 +6,7 @@ from smsTwilio import *
 import datetime
 from maps import *
 import time
+from char_lcd import *
 
 # Route Data
 # ToDo: Create a list of bus stops in the order of the route
@@ -76,6 +77,7 @@ def main():
     targetStop = 1313
     totalTime, capacity, numWaypoints = getClosestBus(bRoute, targetStop)
     print(totalTime, capacity, numWaypoints)
+    displayData((str)(round(totalTime/60)) + " mins", (str)(100 - capacity))
     if totalTime > 300:
         sendSMS('+19732166660',
                 f"Bus {bRoute} is {round(totalTime/60)} minutes away from your stop. Capacity is {capacity}%.")
@@ -95,4 +97,7 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    while True:
+        if buttonPressed():
+            main()
+
