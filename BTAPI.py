@@ -46,11 +46,13 @@ def get_route_info(bus_name):
     )
     return response.json()["data"]
 
+if __name__ == "__main__":
+    all_buses = get_all_bus_info()
 
-all_buses = get_all_bus_info()
-
-for bus in all_buses:
-    real_time_info = bus["states"][0]
-    print(
-        f"Bus {bus['routeId']} is at {real_time_info['realtimeLatitude']}, {real_time_info['realtimeLongitude']}, going {real_time_info['speed']} mph."
-    )
+    for bus in all_buses:
+        real_time_info = bus["states"][0]
+        print(
+            f"Bus {bus['routeId']} is at {real_time_info['realtimeLatitude']}, {real_time_info['realtimeLongitude']}, going {real_time_info['speed']} mph."
+        )
+        print(bus)
+        break
