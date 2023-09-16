@@ -77,7 +77,7 @@ def main():
     targetStop = 1313
     totalTime, capacity, numWaypoints = getClosestBus(bRoute, targetStop)
     print(totalTime, capacity, numWaypoints)
-    displayData((str)(round(totalTime/60)) + " mins", (str)(100 - capacity))
+    displayData((str)(round(totalTime/60)) + " mins", (str)(capacity) + "% Full")
     if totalTime > 300:
         sendSMS('+19732166660',
                 f"Bus {bRoute} is {round(totalTime/60)} minutes away from your stop. Availability is {100 - capacity}%.")

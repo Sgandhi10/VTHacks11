@@ -69,7 +69,7 @@ def displayData(_time, _cap):
     lcd.message('ETA: ')
     lcd.message(_time)
     lcd.message('\n')
-    lcd.message('Availability: ')
+    # lcd.message('Availability: ')
     lcd.message(_cap)
 
     time.sleep(2.5)
