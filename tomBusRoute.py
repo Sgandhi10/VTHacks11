@@ -86,7 +86,7 @@ def main():
             totalTime, capacity, numWaypoints = getClosestBus(
                 bRoute, targetStop)
 
-            totalTime *= 1.2  # Bus tends to move slower
+            totalTime *= 1.4  # Bus tends to move slower
             totalTime += 30 * \
                 numWaypoints if capacity > 50 else 0  # Bus tends to stop longer
             print(totalTime, capacity, numWaypoints)
@@ -100,4 +100,3 @@ if __name__ == "__main__":
     while True:
         if buttonPressed():
             main()
-
