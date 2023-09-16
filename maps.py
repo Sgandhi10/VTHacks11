@@ -20,11 +20,14 @@ def getDirections(origin, destination):
 
     if directions:
         duration = directions[0]["legs"][0]["duration"]["text"]
+        print(directions[0]["legs"][0]["duration"])
         print(f"Estimated travel time: {duration}")
+        return directions[0]["legs"][0]["duration"]["value"]
     else:
         print("No directions found.")
+
         
-    return directions
+    return -1
 
 if __name__ == "__main__":
     # Define the origin and destination coordinates
